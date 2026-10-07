@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Ephemeral rooms must never be indexed: the URL fragment carries the key and
+# the room is gone when the timer runs out.
+Disallow: /r/
+Disallow: /auth/
+Disallow: /api/
+Disallow: /ws
+Disallow: /admin
+Disallow: /get-started/
+Disallow: /firm-welcome
+
+Sitemap: https://hushroom.io/sitemap.xml

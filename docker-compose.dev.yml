@@ -1,0 +1,32 @@
+# LOCAL DEV override — never used on prod.
+#
+#   docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d
+#   (or: npm run dev:up / npm run dev:down from repo root)
+#
+# Differences from prod docker-compose.yml:
+#   - backend: NODE_ENV=development, source-mounted .env from backend/.env (same), image rebuilt locally
+#   - redis:   exposed on 127.0.0.1:6379 so you can `redis-cli` from the host
+#   - livekit: runs in `--dev` mode (devkey/secret, no TLS, no TURN, no
+#              Let's Encrypt mount, no prod NODE_IP) using livekit.dev.yaml
+#              so voice/video can be exercised locally on ws://localhost:7880
+services:
+  backend:
+    environment:
+      - NODE_ENV=development
+      - LIVEKIT_URL=ws://localhost:7880
+      - LIVEKIT_API_KEY=devkey
+      - LIVEKIT_API_SECRET=devsecret-devsecret-devsecret-32chars
+      - DISABLE_EMAIL_SEND=1
+
+  redis:
+    ports:
+      - "127.0.0.1:6379:6379"
+
+  livekit:
+    network_mode: host
+    volumes:
+      - ./livekit.dev.yaml:/etc/livekit.yaml:ro
+    environment:
+      LIVEKIT_KEYS: "devkey: devsecret-devsecret-devsecret-32chars"
+      NODE_IP: "127.0.0.1"
+    command: --config /etc/livekit.yaml

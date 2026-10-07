@@ -1,0 +1,23 @@
+port: 7880
+# NODE_IP is supplied explicitly via docker-compose env (203.0.113.10).
+# With it set we don't need STUN-based discovery, which is unreliable on
+# residential ISPs where the host has multiple local interfaces.
+rtc:
+  tcp_port: 7881
+  port_range_start: 50000
+  port_range_end: 60000
+  use_external_ip: false
+  enable_loopback_candidate: false
+turn:
+  enabled: true
+  domain: hushroom.io
+  udp_port: 3478
+  tls_port: 5349
+  cert_file: /etc/letsencrypt/live/hushroom.io/fullchain.pem
+  key_file: /etc/letsencrypt/live/hushroom.io/privkey.pem
+# keys are supplied via the LIVEKIT_KEYS env var (docker-compose env:
+# LIVEKIT_KEYS="${LIVEKIT_API_KEY}: ${LIVEKIT_API_SECRET}"). Rotate by
+# regenerating with `livekit-server generate-keys` and updating
+# /srv/hushroom/.env + backend/.env.
+logging:
+  level: info

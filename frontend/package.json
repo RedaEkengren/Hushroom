@@ -1,0 +1,43 @@
+{
+  "name": "hushroom-frontend",
+  "private": true,
+  "version": "2.0.3",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && node scripts/prerender-content.mjs",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prerender": "node scripts/prerender-content.mjs"
+  },
+  "dependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/js-cookie": "^3.0.6",
+    "dompurify": "^3.3.1",
+    "js-cookie": "^3.0.5",
+    "livekit-client": "^2.17.2",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.13.1",
+    "tweetnacl": "^1.0.3",
+    "tweetnacl-util": "^0.15.1",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/node": "^26.3.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "@vitest/ui": "^4.1.5",
+    "autoprefixer": "^10.4.20",
+    "fast-check": "^4.7.0",
+    "jsdom": "^29.1.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.14",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^4.1.5"
+  }
+}

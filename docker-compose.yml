@@ -1,0 +1,68 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    # Explicit image name so the deploy script can tag :prev for rollback
+    # regardless of the checkout directory name (compose default would be
+    # <dirname>-backend → "hushroomio-backend" on prod, "hushroom-backend" in dev).
+    image: hushroom-backend:latest
+    container_name: hushroom-backend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3010:3010"
+    env_file:
+      - ./backend/.env
+    environment:
+      - NODE_ENV=production
+      - PORT=3010
+      - REDIS_URL=redis://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - hushroom-net
+    deploy:
+      resources:
+        limits:
+          memory: 200M
+    stop_grace_period: 10s
+
+  redis:
+    image: redis:7-alpine
+    container_name: hushroom-redis
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    networks:
+      - hushroom-net
+    deploy:
+      resources:
+        limits:
+          memory: 100M
+
+  livekit:
+    image: livekit/livekit-server:v1.13.5
+    container_name: hushroom-livekit
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml:ro
+      - /etc/letsencrypt:/etc/letsencrypt:ro
+    environment:
+      LIVEKIT_KEYS: "${LIVEKIT_API_KEY}: ${LIVEKIT_API_SECRET}"
+      # REQUIRED: the public IP of this host. LiveKit announces it to clients,
+      # and setting it explicitly avoids STUN discovery, which is unreliable
+      # when the machine has several interfaces or sits behind NAT.
+      NODE_IP: "203.0.113.10"
+    command: --config /etc/livekit.yaml
+
+networks:
+  hushroom-net:
+    driver: bridge

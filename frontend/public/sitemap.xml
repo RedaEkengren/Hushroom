@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Rooms (/r/*), admin and the firm wizard are deliberately absent: rooms are
+     ephemeral and must never be indexed, the rest is not public content.
+     Swedish pages live on the clean paths, English under /en. Every page is
+     declared with both language alternates and x-default pointing at Swedish. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://hushroom.io/</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://hushroom.io/sa-fungerar-det</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/sa-fungerar-det"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/sa-fungerar-det"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en/how-it-works</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/sa-fungerar-det"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/how-it-works"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/sa-fungerar-det"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hushroom.io/sakerhet</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/sakerhet"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/security"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/sakerhet"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en/security</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/sakerhet"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/security"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/sakerhet"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hushroom.io/priser</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/priser"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/priser"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en/pricing</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/priser"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/pricing"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/priser"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://hushroom.io/for-advokatbyraer</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/for-advokatbyraer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/for-law-firms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/for-advokatbyraer"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en/for-law-firms</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/for-advokatbyraer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/for-law-firms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/for-advokatbyraer"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://hushroom.io/om-oss</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/om-oss"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/om-oss"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en/about</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/om-oss"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/om-oss"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://hushroom.io/integritet</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/integritet"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/integritet"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en/privacy</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/integritet"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/integritet"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://hushroom.io/villkor</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/villkor"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/villkor"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://hushroom.io/en/terms</loc>
+    <xhtml:link rel="alternate" hreflang="sv" href="https://hushroom.io/villkor"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hushroom.io/en/terms"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hushroom.io/villkor"/>
+    <lastmod>2026-08-26</lastmod>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>

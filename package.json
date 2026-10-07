@@ -1,0 +1,19 @@
+{
+  "name": "hushroom-e2e",
+  "version": "2.0.3",
+  "private": true,
+  "scripts": {
+    "test": "npx playwright test",
+    "test:list": "npx playwright test --reporter=list",
+    "test:prod": "E2E_BASE_URL=https://hushroom.io npx playwright test",
+    "dev:up": "docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build",
+    "dev:down": "docker compose -f docker-compose.yml -f docker-compose.dev.yml down",
+    "dev:logs": "docker compose -f docker-compose.yml -f docker-compose.dev.yml logs -f",
+    "check:sizes": "bash scripts/check-file-sizes.sh"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "jsonwebtoken": "^9.0.3"
+  }
+}

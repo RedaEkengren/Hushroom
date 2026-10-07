@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply text-gray-900;
+  }
+
+  /* When inside an active room, disable pull-to-refresh and overscroll
+     bounce so a stray swipe doesn't reload the page and tear down the
+     WebSocket / LiveKit session. */
+  body.in-room {
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+    /* The room view is a fixed-height app shell (RoomView root = 100dvh,
+       only the message list scrolls). Never let the document itself scroll,
+       so the header/input can't slide off-screen when the participant list
+       expands or the mobile keyboard opens. */
+    overflow: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
+  }
+
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d5db #f3f4f6;
+  }
+
+  /* Chat area scrollbar - subtler */
+  .chat-scrollbar::-webkit-scrollbar-track {
+    @apply bg-gray-50 rounded-full;
+  }
+
+  .chat-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300/70 rounded-full hover:bg-gray-400;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-brand-green/50 ring-offset-2;
+  }
+}
+
+@layer components {
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-sm border border-gray-200/50;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-green/50 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Hover lift effect */
+  .hover-lift {
+    @apply transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-green to-brand-green-light bg-clip-text text-transparent;
+  }
+
+  /* Shimmer loading effect */
+  .shimmer {
+    @apply bg-gradient-to-r from-transparent via-white/20 to-transparent bg-[length:200%_100%] animate-shimmer;
+  }
+}
+
+@layer utilities {
+  /* ── Landing product animations (LinkFlowDemo, ServerViewDemo) ──────────
+     Transform and opacity only: no layout is animated, so these stay on the
+     compositor. Every one of them is disabled under prefers-reduced-motion,
+     where the components also render a static frame instead (see
+     useDemoSequence.ts). The prerender step runs chromium with
+     reducedMotion: 'reduce', so the baked markup is that static frame. */
+  @keyframes demo-fade-up {
+    from { opacity: 0; transform: translate3d(0, 8px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+
+  @keyframes demo-dissolve {
+    0%   { opacity: 1; transform: scale3d(1, 1, 1); }
+    60%  { opacity: 0.35; transform: scale3d(0.97, 0.97, 1); }
+    100% { opacity: 0; transform: scale3d(0.92, 0.92, 1); }
+  }
+
+  @keyframes demo-caret {
+    0%, 45%   { opacity: 1; }
+    55%, 100% { opacity: 0; }
+  }
+
+  @keyframes demo-travel {
+    0%   { opacity: 0; transform: translate3d(-42%, 0, 0); }
+    20%  { opacity: 1; }
+    80%  { opacity: 1; }
+    100% { opacity: 1; transform: translate3d(42%, 0, 0); }
+  }
+
+  .demo-fade-up { animation: demo-fade-up 420ms ease-out both; }
+  .demo-dissolve { animation: demo-dissolve 1100ms ease-in both; }
+  .demo-caret { animation: demo-caret 1s steps(1, end) infinite; }
+  .demo-travel { animation: demo-travel 1600ms ease-in-out both; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .demo-fade-up,
+    .demo-dissolve,
+    .demo-caret,
+    .demo-travel {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+
+  /* Prevent text selection */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  /* iOS safe areas */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  .mb-safe {
+    margin-bottom: env(safe-area-inset-bottom, 0);
+  }
+}
